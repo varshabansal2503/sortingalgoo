@@ -1,0 +1,58 @@
+ANS:1-- nums1 and nums2 into a single array sorted in non-decreasing order.
+class Solution {
+   public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int p1 = m - 1;
+        int p2 = n - 1;
+        int pMerge = m + n - 1;
+        
+        while (p2 >= 0) {
+            if (p1 >= 0 && nums1[p1] > nums2[p2]) {
+                nums1[pMerge--] = nums1[p1--];
+            } else {
+                nums1[pMerge--] = nums2[p2--];
+            }
+        }
+    }
+}
+ANS:2--Kth Smallest Element in the Array.
+public class Solution {
+    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
+    public int kthsmallest(final int[] A, int B)
+     {
+       
+
+  
+       
+
+        // Sort the array
+        Arrays.sort(A);
+
+        // Return the kth smallest element
+        return A[B- 1];
+    }
+
+     
+}
+ANS:3--Given an unsorted array arr[] of size N, the task is to check whether the array consists of consecutive numbers or not.
+class Solution
+{
+    boolean areConsecutives(long arr[], int N)
+    {
+        int count=0;
+
+            Arrays.sort(arr);
+            for(int i=0;i<N-1;i++)
+            {
+                if(arr[i+1]==(arr[i]+1))
+                {
+                    count++;
+                }
+            }
+            if(count==(N-1))
+            {
+                return true;
+            }
+            return false;
+    }
+}
+
