@@ -55,4 +55,63 @@ class Solution
             return false;
     }
 }
+ANS:4--Given an array of integers nums, sort the array in ascending order and return it.
+
+You must solve the problem without using any built-in functions in O(nlog(n)) time complexity and with the smallest space complexity possible.
+
+class Solution {
+
+    public static void merge(int nums[],int si,int mid,int ei)
+    {
+        int temp[]=new int [ei-si+1];
+        int i=si;
+        int j=mid+1;
+        int k=0;
+        while(i<=mid && j<=ei)
+        {
+            {
+                if(nums[i]<nums[j])
+                {
+                    temp[k]=nums[i];
+                    i++;
+                }
+                else
+                {
+                    temp[k]=nums[j];
+                    j++;
+                }
+                k++;
+            }
+        } 
+        while(i<=mid)
+        {
+            temp[k++]=nums[i++];
+        }  
+        while(j<=ei)
+        {
+            temp[k++]=nums[j++];
+        }
+        for(k=0,i=si;k<temp.length;k++,i++)
+        {
+            nums[i]=temp[k];
+        }
+        
+    }
+     public static void merge_sort(int nums[],int si,int ei)
+    {
+        if(si>=ei)
+        {
+            return;
+        }
+        int mid=(si+ei)/2;
+        merge_sort(nums,si,mid);
+        merge_sort(nums,mid+1,ei);
+        merge(nums,si,mid,ei);
+    }
+    public int[] sortArray(int[] nums) {
+        merge_sort(nums,0,nums.length-1);
+        return nums;
+    }
+}
+NAS:5--
 
